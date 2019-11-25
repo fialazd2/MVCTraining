@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MoviesViewModel>
+@{
+    ViewBag.Title = "Released";
+}
+<h2>Released</h2>
+
+<h1>Filtered movies count @Model.Count()</h1>
+@Html.Partial("_MoviesTable", Model)
+
+
+

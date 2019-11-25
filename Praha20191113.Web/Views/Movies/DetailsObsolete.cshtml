@@ -1,0 +1,55 @@
+﻿@model MoviesViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+@section nextAction{
+    <li>@Html.ActionLink("Next", "Details", "Movies", new { id = Model.Id + 1 }, null)</li>
+}
+
+@section previousAction{
+    <li>@Html.ActionLink("Previous", "Details", "Movies", new { id = Model.Id - 1 }, null)</li>
+}
+
+<h2>Details</h2>
+<div class="row">
+<div class="col-md-8">
+    <section id="createMovieForm">
+        @using (Html.BeginForm("Edit", "Movies", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.HiddenFor(movie => movie.Id);
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Edit Movie" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </section>
+</div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Movie title</th>
+            <th>Movie Genre</th>
+            <th>Released Data</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Title</td>
+            <td>@Model.Genre</td>
+            <td>@Model.ReleasedDate</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+

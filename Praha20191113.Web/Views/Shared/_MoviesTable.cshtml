@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MoviesViewModel>
+@{
+    ViewBag.Title = "_MoviesTable";
+}
+
+<h2>_MoviesTable</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Movie title</th>
+            <th>Movie Genre</th>
+            <th>Released Data</th>
+            <th>Director</th>
+            <th>Show Detail</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var movie in Model)
+        {
+        <tr>
+            <td>@movie.Id</td>
+            <td>@movie.Title</td>
+            <td>@movie.Genre</td>
+            <td>@movie.ReleasedDate</td>
+            <td>@movie.Director</td>
+            <td>
+                <button class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Movies", new { id = movie.Id })'">
+                    Show Detail
+                </button>
+                <a href="@Url.Action("Details", "Movies", new { id = movie.Id })" class="btn btn-primary">text</a>
+
+                @Html.ActionLink("DShiw de", "Details", "Movies", new { id = movie.Id }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
